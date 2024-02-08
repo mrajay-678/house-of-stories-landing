@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  scroll-padding: 0;
+}
+body {
+  overflow-x: hidden;
+  // -webkit-overflow-scrolling: touch;
+  // overflow-scrolling: touch;
+  background-color: #19181c;
+}
+.main-section {
+  background-color: #19181c;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 200px;
+  align-items: center;
+}
+.loader__barcode {
+  position: relative;
+  margin: 0 auto;
+  animation-name: widthSmall;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  margin-bottom: 10px;
+  transition: all 0.5s;
+  img {
+    animation-name: widthSmall;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    width: 200px;
+    display: block;
+  }
+  &:before {
+    content: "";
+    width: calc(100% + 60px);
+    left: -30px;
+    display: block;
+    height: 3px;
+    background-color: red;
+    opacity: 0.7;
+    position: absolute;
+    box-shadow: 0px 0px 8px 5px red;
+    border-radius: 100%;
+    top: 50%;
+    -webkit-animation-name: scan;
+    animation-name: scan;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+  }
+}
+
+@keyframes widthSmall {
+  0% {
+    width: 200px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@-webkit-keyframes scan {
+  0% {
+    top: 50%;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 50%;
+  }
+  25% {
+    top: 5px;
+    top: 5px;
+  }
+  75% {
+    top: 80%;
+    top: 80%;
+  }
+}
+.loader__logo {
+  width: 200px;
+  margin-bottom: 10px;
+}
+.animate__fadeInUp {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+}
+@for $i from 1 through 10 {
+  body .animate__fadeInUp_section:nth-child(#{$i}n) {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    animation-delay: #{$i * 500}ms;
+    -webkit-animation-delay: #{$i * 200}ms;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    width: fit-content;
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+.gradient-img {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  opacity: 0.5;
+  z-index: 0;
+  transition: all 10s;
+}
+.enter-section {
+  width: 50vw;
+  padding: 0 !important;
+  div {
+    position: relative;
+    font-size: 100px;
+    color: #fff;
+  }
+}
+.main-text {
+  font-size: 40px;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #19181c;
+  .one {
+    width: 30vw;
+    text-align: center;
+    position: relative;
+    color: #fff;
+  }
+}
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.image-pop-up {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp;
+  animation-duration: 2s;
+  position: absolute;
+  width: 30vw;
+  top: 0;
+  left: 0;
+}
+.container {
+  .panel {
+    background-color: #19181c;
+    padding: 5vw 0 5vw 5vw;
+    gap: 5vw;
+    .experince-outer {
+      position: relative;
+      width: fit-content;
+
+      &:nth-child(odd) {
+        height: fit-content;
+        margin-left: auto;
+      }
+    }
+  }
+}
+.experince-outer {
+  padding: 40px;
+  .popup {
+    background: #810020;
+    width: 200px;
+    position: absolute;
+    color: white;
+    padding: 10px 20px 30px;
+    top: 0;
+    left: 0;
+
+    div:nth-child(1) {
+      font-size: clamp(50px, 70px, 100px);
+      font-weight: bold;
+    }
+
+    div:nth-child(2) {
+      font-size: clamp(30px, 30px, 60px);
+      font-weight: bold;
+    }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: revert;
+      right: -20px;
+      bottom: -10px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-right: 20px solid #810020;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid transparent;
+      transform: rotate(135deg);
+    }
+  }
+}
